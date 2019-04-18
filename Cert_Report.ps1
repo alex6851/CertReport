@@ -3,9 +3,9 @@ Import-Module PSPKI
 #Variables
 $TempFile = "C:\Temp\CA_Report.html"
 $Today = get-date
-$To = "reportingaddress@contoso.com"
-$From = "me@contoso.com"
-$SMTPServer = "mailserver.contoso.com"
+$To = "alexander.baker@mrcy.com"
+$From = "alexander.baker@mrcy.com"
+$SMTPServer = "10.160.60.57"
 
 #Get the CA Name
 $CAName = (Get-CA | select Computername).Computername
