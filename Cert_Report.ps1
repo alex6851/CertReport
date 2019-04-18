@@ -4,7 +4,7 @@ Import-Module PSPKI
 $TempFile = "C:\Temp\CA_Report.html"
 $Today = get-date
 $To = "alexander.baker@mrcy.com"
-$From = "alexander.baker@mrcy.com"
+$From = "CERT_REPORT@mrcy.com"
 $SMTPServer = "10.160.60.57"
 
 #Get the CA Name
@@ -36,10 +36,10 @@ $Body = "See Attached"
 
 if ($EarliestExpiryInteger -le 7)
 {
-    $Subject = "WARNING next Expiring Cert is $EarliestExpiryInteger from now, $PendingCountStr Requests Pending)"
+    $Subject = "WARNING Cert expires $EarliestExpiryInteger days from now, $PendingCountStr Requests Pending"
 }
 else {
-    $Subject = "Expiring Certs Report nex Expiring Cert is $EarliestExpiryInteger from now, $PendingCountStr Requests Pending)"
+    $Subject = "Next Expiring Cert is $EarliestExpiryInteger from now, $PendingCountStr Requests Pending"
 }
 
 Send-mailmessage -To $To -From $From -SmtpServer $SMTPServer -Subject $Subject -Body $Body -Attachments $TempFile
