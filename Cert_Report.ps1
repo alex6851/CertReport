@@ -11,7 +11,7 @@ $SMTPServer = "10.160.60.57"
 $CAName = (Get-CA | select Computername).Computername
 
 #Get Details on Issued Certs
-$Output = Get-CA | Get-IssuedRequest -Filter "NotAfter -ge $(Get-Date)", "NotAfter -le $((Get-Date).AddMonths(2))" | select RequestID, CommonName, NotAfter, CertificateTemplate | sort Notafter
+$Output = Get-CA | Get-IssuedRequest -Filter "NotAfter -ge $(Get-Date)", "NotAfter -le $((Get-Date).AddMonths(4))" | select RequestID, CommonName, NotAfter, CertificateTemplate | sort Notafter
 
 #Take the above, and exclude CAExchange Certs, Select the first one, and get an integer value on how many days until the earliest renewal is necessary
 $RelevantInfo = ($Output | where-Object {$_.CertificateTemplate -notlike "CAExchange" -and $_.CertificateTemplate -notlike "1.3.6.1.4.1.311.21.8.1409591.2629332.1724303.11985699.9815899.150.16496907.14499982"})
