@@ -1,11 +1,14 @@
+Install-Module -Name PSPKI -RequiredVersion 3.2.7.0 
+
 Import-Module PSPKI
+
 
 #Variables
 $TempFile = "C:\Temp\CA_Report.html"
 $Today = get-date
 $To = "alexander.baker@mrcy.com"
 $From = "CERT_REPORT@mrcy.com"
-$SMTPServer = "10.160.60.57"
+$SMTPServer = "mail.mrcy.com"
 
 #Get the CA Name
 $CAName = (Get-CA | select Computername).Computername
@@ -45,3 +48,5 @@ else {
 Send-mailmessage -To $To -From $From -SmtpServer $SMTPServer -Subject $Subject -Body $Body -Attachments $TempFile
 
 Remove-Item $TempFile -force
+
+
